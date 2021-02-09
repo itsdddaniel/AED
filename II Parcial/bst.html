@@ -1,0 +1,92 @@
+<meta charset ="utf-8">
+<script>
+
+class Node
+{
+	this.value = value;
+	this.derecha = null;
+	this.izquierda = null;
+}
+
+class BST
+{
+	this.root = null;
+	const add = function add(value)
+	{
+		node = this.root;
+		if(node == null)
+		{
+			this.root = new Node(value);
+		}
+		else
+		{
+			if(value < node.value)
+			{   
+				if(this.derecha == null)
+				{
+					this.derecha = new Node(value);
+				}
+				else if(this.derecha != null)
+				{
+					add(this.derecha);
+				}
+			}
+		}	
+		else(value > node.value)
+		{
+			if(this.izquierda == null)
+			{
+				this.izquierda = new Node(value);
+			}
+			else if(this.izquierda != null)
+			{
+				add(this.izquierda);
+			}
+		}
+	}	
+	const pequeño = function encontrarpequeño()
+	{
+		current = this.root;
+		if(current != null)
+		{
+			current = current.derecha;
+		}
+	}	
+	const grande = function encontrargrande()
+	{
+		current = this.root;
+		if(current != null)
+		{
+			current = current.izquierda;
+		}
+	}	
+	const presente = function estapresente()
+	{
+		current = this.root;
+		while(current)
+		{
+			if(current == this.root)
+			{
+				return true;
+			}
+			else if(value < this.root)
+			{
+				current = current.derecha;
+			}
+			else
+			{
+				current = current.izquierda;
+			}
+		}
+		return false;
+	}
+}
+
+bst = new BST();
+bst.add(4);
+bst.add(100);
+bst.add(1);
+console.log(node.encontrargrande());
+console.log(node.encontrarpequeño());
+console.log(node.estapresente(4));
+</script>

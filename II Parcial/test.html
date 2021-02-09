@@ -1,0 +1,154 @@
+<meta charset ="utf-8">
+<script>
+
+function Node(value)
+{
+	this.value = value;
+	this.next = null;
+}	
+
+
+function LinkedList()
+{
+	this.firstchild = null;
+	this.search = LinkedListSearch;
+	this.add = LinkedListAdd;
+	this.print = LinkedListPrint;
+	this.delete = LinkedListDelete;
+}
+
+function LinkedListAdd(item)
+{
+	var current = this.firstchild;
+	if(!current)
+	{
+		this.firstchild = new Node(item);		
+	}
+	else 
+	{
+		while(current.next)
+		{
+			current = current.next;
+			if(item > current.value)
+			{
+				var temp;
+				temp = item;
+				item = current.value;
+				current.value = temp;
+
+			}
+		}		
+	current.next = new Node(item);
+	}
+}
+
+function LinkedListDelete(item)
+{
+	if(this.firstchild == item)		//verifica si el primer nodo es igual a item ingresado por el usuario
+	{								
+		this.firstchild = this.firstchild.next;	//si es igual entonces el primero nodo va ha ser igual a nodo que le sigue.
+	}
+	else
+	{
+		var NodoAnterior = this.firstchild.next;//creamos una variable que apunte al valor que sigue despues del primernodo
+		var current = NodoAnterior.next; //current ahora tendra el valor del segundo nodo
+		while(current)
+		{
+			if(current.value == item) //verifica si el valor ingresado es igual valor del nodo.
+			{
+				NodoAnterior.next = current.next;
+				current = current.next;
+				break;
+			}
+			else
+			{
+				NodoAnterior = current;
+				current = current.next;
+			}
+		}
+	}
+}
+
+function LinkedListPrint()
+{
+	var current = this.firstchild;
+	while(current)
+	{
+		if(current.value == ""|current.value == null)
+		{
+			console.log("no hay elementos");
+		}
+		else
+		{
+			console.log(`Los elementos son: ${current.value}`);
+			current = current.next;
+		}
+	}
+}
+
+function LinkedListSearch(value)	
+{
+	var current = this.firstchild;
+	while(current)
+	{
+		if(current.value === value)
+		{
+			console.log(`Valor encontrado: ${current.value}`);
+		}
+		current = current.next;
+	}
+	console.log("Valor ingresado no encontrado.");
+	return current;
+}
+
+/*list = new Tree();
+list.add(100);
+list.add(1);
+list.add(7);
+list.add(13);
+list.add(16);
+list.add(15);
+list.add(19);
+list.add(5);
+list.search(5);
+
+list.print();*/
+
+console.log("¿add?, ¿delete?, ¿search?");
+input = prompt();
+while(input == "add"|input == "delete"| input == "search")
+{
+	if(input == "add")
+	{
+		console.log("Ingrese lo que desea agregar: ");
+		input2 = prompt();
+		list.add(input2);
+		if(input2 == ""|input2 == null)
+		{
+			break;
+		}
+	}
+	else if(input == "delete")
+	{
+		console.log("Ingrese lo que desea borrar: ");
+		input2 = prompt();
+		list.delete(input2);
+		if(input2 == ""|input2 == null)
+		{
+			break;
+		}
+	}
+	else if(input == "search")
+	{
+		console.log("Ingrese lo que desea buscar: ");
+		input2 = prompt();
+		list.search(input2);
+		if(input2 == ""|input2 == null)
+		{
+			break;
+		}
+	}
+list.print();
+}
+
+</script>
