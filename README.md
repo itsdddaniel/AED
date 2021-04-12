@@ -1,6 +1,6 @@
 @author Daniel Arteaga
-@version 1.0
-@date 08/02/2021
+@version 2.0
+@date 11/04/2021
 
 # Contenido
 
